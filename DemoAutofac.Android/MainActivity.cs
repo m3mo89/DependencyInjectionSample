@@ -6,6 +6,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using DemoAutofac.Interfaces;
+using DemoAutofac.Droid.Services;
 
 namespace DemoAutofac.Droid
 {
@@ -21,8 +23,16 @@ namespace DemoAutofac.Droid
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            RegisterTypes();
             LoadApplication(new App());
         }
+
+        public void RegisterTypes()
+        {
+            App.RegisterType<IDeviceInfo, DeviceInfo>();
+            App.BuildContainer();
+        }
+
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Autofac;
 using Xamarin.Forms;
 
 namespace DemoAutofac
@@ -15,6 +16,7 @@ namespace DemoAutofac
     {
         public MainPage()
         {
+            BindingContext = App.container.Resolve<MainViewModel>();
             InitializeComponent();
         }
     }

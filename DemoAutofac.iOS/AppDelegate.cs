@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using DemoAutofac.Interfaces;
+using DemoAutofac.iOS.Services;
 using Foundation;
 using UIKit;
 
@@ -23,9 +24,16 @@ namespace DemoAutofac.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            RegisterTypes();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
+        }
+
+        public void RegisterTypes()
+        {
+            App.RegisterType<IDeviceInfo, DeviceInfo>();
+            App.BuildContainer();
         }
     }
 }
