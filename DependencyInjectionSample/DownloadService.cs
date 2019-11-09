@@ -1,7 +1,7 @@
 ﻿using System;
 namespace DependencyInjectionSample
 {
-    public class DownloadService
+    public class DownloadService : IDownloadService
     {
         public string Download(string url)
         {
@@ -10,5 +10,10 @@ namespace DependencyInjectionSample
 
             return "localPath/book.pdf";
         }
+    }
+
+    public interface IDownloadService
+    {
+        string Download(string url);
     }
 }

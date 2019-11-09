@@ -12,7 +12,10 @@ namespace DependencyInjectionSample
                 Url = "https://someweb.com/files/book.pdf"
             };
 
-            DocumentManager documentManager = new DocumentManager();
+            DocumentManager documentManager
+                = new DocumentManager(new DownloadService(),
+                                      new DocumentProcessor(new DocumentRepository()));
+
             documentManager.DownloadDocument(document);
         }
     }
