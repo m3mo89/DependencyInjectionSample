@@ -6,7 +6,14 @@ namespace DependencyInjectionSample
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Document document = new Document()
+            {
+                Id = 1,
+                Url = "https://someweb.com/files/book.pdf"
+            };
+
+            DocumentManager documentManager = new DocumentManager();
+            documentManager.DownloadDocument(document);
         }
     }
 }
